@@ -94,15 +94,12 @@ export default class PostCard extends Component {
                                 {post.caption/*this.props.post.caption */}
                             </Text>
                         </View>
-
-
-
                     </TouchableOpacity>
 
                     <View style={styles.actionContainer}>
                         <TouchableOpacity
                             onPress={() => this.likeAction()}>
-                            <View style={!this.state.is_liked ? styles.likeButton : styles.likeButtonLiked}>
+                            <View style={!this.state.is_liked ? styles.likeButtonDisliked : styles.likeButtonLiked}>
                                 <Ionicons name={"heart"} size={RFValue(30)} color={"white"} />
                                 <Text style={styles.likeText}>{this.state.likes/*12k*/}</Text>
                             </View>
@@ -205,6 +202,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         backgroundColor: '#eb3948',
+        borderRadius: RFValue(30),
+    },
+    likeButtonDisliked: {
+        width: RFValue(160),
+        height: RFValue(40),
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        borderColor: '#eb3948',
+        borderWidth: 2,
         borderRadius: RFValue(30),
     },
 });
