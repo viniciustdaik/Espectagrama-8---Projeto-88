@@ -10,6 +10,7 @@ import {
     Dimensions,
     TouchableOpacity,
     ScrollView,
+    Alert,
 } from "react-native";
 
 import { RFValue } from "react-native-responsive-fontsize";
@@ -102,6 +103,15 @@ export default class PostScreen extends Component {
                             {/*<Text style={styles.captionText}>
                                 {this.props.route.params.post.caption}
                     </Text>*/}
+                        </View>
+                        <View style={styles.actionContainer}>
+                            <TouchableOpacity
+                                onPress={() => this.likeAction()}>
+                                <View style={!this.state.is_liked ? styles.likeButtonDisliked : styles.likeButtonLiked}>
+                                    <Ionicons name={"heart"} size={RFValue(30)} color={"white"} />
+                                    <Text style={styles.likeText}>{this.state.likes/*12k*/}</Text>
+                                </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </ScrollView>
@@ -200,5 +210,24 @@ const styles = StyleSheet.create({
         color: "white", //white
         fontSize: RFValue(25),
         marginLeft: RFValue(4),
-    }
+    },
+    likeButtonLiked: {
+        width: RFValue(160),
+        height: RFValue(40),
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#eb3948',
+        borderRadius: RFValue(30),
+    },
+    likeButtonDisliked: {
+        width: RFValue(160),
+        height: RFValue(40),
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        borderColor: '#eb3948',
+        borderWidth: 2,
+        borderRadius: RFValue(30),
+    },
 });
